@@ -1,0 +1,6 @@
+sensor_msgs/Temperature temperature
+sensor_msgs/FluidPressure pressure
+sensor_msgs/FluidPressure pressure_sea_level
+float64 altitude
+
+
