@@ -40,6 +40,7 @@ import rospy
 from std_msgs.msg import String
 from geometry_msgs.msg import Twist
 from sensor_msgs.msg import Imu
+import std_msgs.msg
 
 import smbus
 import math
@@ -132,7 +133,9 @@ def talker():
         arr = print_gyro()
         i = Imu()
 
+        i.header = std_msgs.msg.Header()
         i.header.frame_id="my_frame"
+        i.header.stamp = rospy.Time.now() # Note you need to call rospy.init_node() before this will work
         i.linear_acceleration.x=arr[0][0]
         i.linear_acceleration.y=arr[0][1]
         i.linear_acceleration.z=arr[0][2]

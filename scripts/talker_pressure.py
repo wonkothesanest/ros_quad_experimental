@@ -55,7 +55,7 @@ def talker():
         bar.pressure_sea_level.fluid_pressure = sensor.read_sealevel_pressure() #Pa
         
         #rospy.get_time()
-        rospy.loginfo(bar)
+        #rospy.loginfo(bar)
         pub.publish(bar)
         r.sleep()
         
