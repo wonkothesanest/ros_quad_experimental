@@ -127,7 +127,7 @@ def print_gyro():
 def talker():
     pub = rospy.Publisher('chatter_imu', Imu, queue_size=10)
     rospy.init_node('talker_imu', anonymous=True)
-    r = rospy.Rate(10) # 10hz
+    r = rospy.Rate(500) # 10hz
     while not rospy.is_shutdown():
         #str = "hello world %s"%print_gyro().__str__()
         arr = print_gyro()
