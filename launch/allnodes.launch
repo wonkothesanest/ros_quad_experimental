@@ -1,0 +1,13 @@
+<launch>
+	<node name="imu" ns="quad" pkg="ros_quad_experimental" type="talker_mpu_imu.py" />
+	<node name="gps" ns="quad" pkg="ros_quad_experimental" type="talker_gps.py" />
+
+	<node name="barometer" ns="quad" pkg="ros_quad_experimental" type="talker_pressure.py" />
+
+	<node name="camera" ns="quad" pkg="raspicam" type="raspicam_node" >
+		<param name="quality" type="int" value="70"/>
+		<param name="framerate" type="int" value="30"/>
+		<param name="width" type="int" value="640"/>
+	</node>
+	<node pkg="rosservice" type="rosservice" name="start_capture" args="call --wait /quad/camera/start_capture"/>
+</launch>

@@ -38,6 +38,7 @@
 
 import rospy
 from std_msgs.msg import String
+import std_msgs.msg
 from ros_quad_experimental.msg import Barometer
 import Adafruit_BMP.BMP085 as BMP085
 
@@ -49,6 +50,14 @@ def talker():
     sensor = BMP085.BMP085()
     while not rospy.is_shutdown():
         bar = Barometer()
+        h =  std_msgs.msg.Header()
+        h.frame_id="quad_test"
+        h.stamp = rospy.Time.now() # Note you need to call rospy.init_node() before this will work
+
+        bar.header = h
+        bar.pressure.header = h
+        bar.pressure_sea_level.header = h
+        bar.temperature.header = h
         bar.pressure.fluid_pressure = sensor.read_pressure() #Pa
         bar.temperature.temperature = sensor.read_temperature() #celcius
         bar.altitude = sensor.read_altitude() #meters

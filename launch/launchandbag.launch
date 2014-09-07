@@ -1,0 +1,4 @@
+<launch>
+	<include file="$(find ros_quad_experimental)/launch/allnodes.launch" />
+	<node pkg="rosbag" type="rosbag" name="rosbag_record" args="record -a -o /home/pi/bagged/output"/>
+</launch>
